@@ -1,0 +1,1 @@
+"""Payriff üçün sorğular modulu"""
