@@ -14,7 +14,19 @@ class PayriffAutoPay(PayriffV2Request[PayriffMinimalResponse]):
         session_id: str,
         description: Optional[str] = None,
     ):
+        """
+        Args:
+            amount: Transaction amount.
+            card_id: Card ID.
+            order_id: Order ID.
+            session_id: Session ID.
+            description: Optional description of the transaction.
+        """
+
         super().__init__()
+
+        self.path = '/autoPay'
+        self.verb = 'POST'
 
         self.body_data.update(
             {
