@@ -2,8 +2,8 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
-from clientaz.payriff.schemas.types import PayriffMinimalResponse
-from clientaz.payriff.v2.sync.base import PayriffV2Request
+from integrify.payriff.schemas.types import PayriffMinimalResponse
+from integrify.payriff.v2.sync.base import PayriffV2Request
 
 
 class PayriffCreateInvoice(PayriffV2Request[PayriffMinimalResponse]):

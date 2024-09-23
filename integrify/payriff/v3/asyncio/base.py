@@ -1,5 +1,5 @@
-from clientaz.base import AsyncApiRequest, RequestType
-from clientaz.payriff.v3.sync.base import PayriffV3Request as SyncPayriffV3Request
+from integrify.base import AsyncApiRequest, RequestType
+from integrify.payriff.v3.sync.base import PayriffV3Request as SyncPayriffV3Request
 
 
 class PayriffV3Request(AsyncApiRequest[RequestType], SyncPayriffV3Request):  # type: ignore[misc]

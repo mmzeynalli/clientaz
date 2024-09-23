@@ -1,5 +1,5 @@
-from clientaz.base import RequestType, SyncApiRequest
-from clientaz.payriff import PAYRIFF_LOGGER_NAME, PAYRIFF_SECRET_KEY
+from integrify.base import RequestType, SyncApiRequest
+from integrify.payriff import PAYRIFF_LOGGER_NAME, PAYRIFF_SECRET_KEY
 
 
 class PayriffV3Request(SyncApiRequest[RequestType]):

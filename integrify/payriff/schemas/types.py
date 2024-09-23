@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from clientaz.payriff.schemas.parts import ResultCodes, ResultMessages
+from integrify.payriff.schemas.parts import ResultCodes, ResultMessages
 
 
 class PayriffMinimalResponse(BaseModel):
