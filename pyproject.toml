@@ -1,31 +1,64 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
-name = "Integrify"
-version = "0.1.0"
-description = "API integrations, simplified"
-authors = ["mmzeynalli <miradil.zeynalli@gmail.com>"]
+name = "integrify"
+version = "1.0.2"
+description = "Integrify API inteqrasiyalarını rahatlaşdıran sorğular kitabaxanasıdır."
+license = "GPL-3.0-or-later"
+authors = [
+    "mmzeynalli <miradil.zeynalli@gmail.com>", 
+    "vahidzhe <vahidzhe@gmail.com>"
+]
 readme = "README.md"
+homepage = "https://github.com/mmzeynalli/integrify"
+repository = "https://github.com/mmzeynalli/integrify"
+documentation = "https://integrify.mmzeynalli.dev/"
+classifiers = [
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python",
+    "Topic :: Internet",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development",
+    "Typing :: Typed",
+    "Environment :: Web Environment",
+    "Framework :: AsyncIO",
+    "Framework :: Pydantic",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Internet :: WWW/HTTP",
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
 pydantic = "^2.8.2"
-python-dotenv = "^1.0.1"
 httpx = "^0.27.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"
+pytest-mock = "^3.14.0"
 mypy = "^1.9.0"
 ruff = "^0.3.5"
 pre-commit = "^3.6.2"
 ptpython = "^3.0.29"
-
-
-[tool.poetry.group.mypy.dependencies]
-types-requests = "^2.32.0.20240712"
+mkdocs-material = "^9.5.36"
+mkdocstrings = {extras = ["python"], version = "^0.26.1"}
+bandit = "^1.7.10"
 
 [tool.ruff]
 target-version = "py311"
 line-length = 100
-
 
 [tool.ruff.lint]
 select = [
@@ -45,6 +78,6 @@ quote-style = "single"
 [tool.ruff.lint.flake8-quotes]
 docstring-quotes = "double"
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.bandit]
+skips = []
+

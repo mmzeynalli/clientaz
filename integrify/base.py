@@ -1,4 +1,4 @@
-from typing import Any, Generic, Optional, TypeVar, Union, get_args
+from typing import Any, Generic, Optional, TypeVar, Union
 from urllib.parse import urljoin
 
 import httpx
@@ -6,8 +6,7 @@ from pydantic import BaseModel, Field
 
 from integrify.logger import LOGGER_FUNCTION
 
-RequestType = TypeVar('RequestType')
-ResponseType = TypeVar('ResponseType')
+ResponseType = TypeVar('ResponseType', bound=BaseModel)
 
 
 class ApiResponse(BaseModel, Generic[ResponseType]):
@@ -24,7 +23,15 @@ class ApiResponse(BaseModel, Generic[ResponseType]):
     """Cavab sorğusunun body-si"""
 
 
-class ApiRequest(Generic[RequestType]):
+def send_request(func):
+    def wrapper(self, *args, **kwargs) -> ApiResponse[ResponseType]:
+        func(self, *args, **kwargs)
+        return self.__call__()
+
+    return wrapper
+
+
+class ApiRequest:
     session: Union[httpx.Client, httpx.AsyncClient, None] = None
 
     def __init__(self, client_name: str, logger_name: str):
@@ -38,8 +45,7 @@ class ApiRequest(Generic[RequestType]):
         self.client_name: str = client_name
         self.logger = LOGGER_FUNCTION(logger_name)
 
-        # Taken from: https://github.com/pydantic/pydantic/issues/7774#issuecomment-2316969376
-        self.resp_model: type[RequestType] = get_args(self.__class__.__orig_bases__[0])[0]  # type: ignore[attr-defined]
+        self.resp_model: type[ResponseType]  # type: ignore[valid-type]
         self.accept_status_codes: list[int] = [200, 201, 204]
 
     @property
@@ -65,23 +71,23 @@ class ApiRequest(Generic[RequestType]):
     def __call__(self, *args: Any, **kwds: Any): ...
 
 
-class SyncApiRequest(ApiRequest[RequestType]):
+class SyncApiRequest(ApiRequest):
     session: Optional[httpx.Client] = None
 
     def __call__(self, *args: Any, **kwds: Any):
         if not self.session:
-            self.session = httpx.Client()
+            self.session = httpx.Client(timeout=10)
 
         resp = self.session.request(self.verb, self.url, data=self.body, headers=self.headers)  # type: ignore[arg-type]
         return self.process_response(resp)
 
 
-class AsyncApiRequest(ApiRequest[RequestType]):
+class AsyncApiRequest(ApiRequest):
     session: Optional[httpx.AsyncClient] = None
 
     async def __call__(self, *args, **kwds):
         if not self.session:
-            self.session = httpx.AsyncClient()
+            self.session = httpx.AsyncClient(timeout=10)
 
         resp = await self.session.request(
             self.verb,

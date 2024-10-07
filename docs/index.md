@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://integrify.mmzeynalli.dev/"><img width="400" src="https://raw.githubusercontent.com/mmzeynalli/integrify/main/docs/assets/integrify.png" alt="Integrify"></a>
+  <a href="https://integrify.mmzeynalli.dev/"><img width="400" src="assets/integrify.png" alt="Integrify"></a>
 </p>
 <p align="center">
     <em>Integrify API inteqrasiyalarını rahatlaşdıran sorğular kitabaxanasıdır.</em>
@@ -81,9 +81,10 @@ class ApiResponse:
     """Cavab sorğusunun body-si"""
 ```
 
+
 ## Dəstəklənən API inteqrasiyaları
 
-| Servis  |                                             Əsas sorğular                                             |                                            Bütün sorğular                                             | Dokumentləşdirilmə | Link                                                                                                  |
-| ------- | :---------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: | ------------------ | ----------------------------------------------------------------------------------------------------- |
-| EPoint  |                                          :heavy_check_mark:                                           | ![loading](https://raw.githubusercontent.com/mmzeynalli/integrify/main/docs/assets/spinner-solid.svg) | Tam                | [Docs](https://github.com/mmzeynalli/integrify/tree/main/integrify/epoint)                            |
-| Payriff | ![loading](https://raw.githubusercontent.com/mmzeynalli/integrify/main/docs/assets/spinner-solid.svg) | ![loading](https://raw.githubusercontent.com/mmzeynalli/integrify/main/docs/assets/spinner-solid.svg) | Tam                | ![loading](https://raw.githubusercontent.com/mmzeynalli/integrify/main/docs/assets/spinner-solid.svg) |
+| Servis  |            Əsas sorğular             |            Bütün sorğular            | Dokumentləşdirilmə | Link                                                                       |
+| ------- | :----------------------------------: | :----------------------------------: | ------------------ | -------------------------------------------------------------------------- |
+| EPoint  |          :heavy_check_mark:          | ![loading](assets/spinner-solid.svg) | Tam                | [Docs](https://github.com/mmzeynalli/integrify/tree/main/integrify/epoint) |
+| Payriff | ![loading](assets/spinner-solid.svg) | ![loading](assets/spinner-solid.svg) | Tam                | ![loading](assets/spinner-solid.svg)                                       |
